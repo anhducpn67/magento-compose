@@ -1,74 +1,13 @@
-B1: clone github
-B2: composer install
-B3: 
-//        {
-//            "name": "mageplaza/module-smtp",
-//            "version": "4.6.3",
-//            "source": {
-//                "type": "git",
-//                "url": "https://github.com/mageplaza/magento-2-smtp.git",
-//                "reference": "49d82c7f85f1b6ddd02d6dff85f4b0009a0acb95"
-//            },
-//            "dist": {
-//                "type": "zip",
-//                "url": "https://api.github.com/repos/mageplaza/magento-2-smtp/zipball/49d82c7f85f1b6ddd02d6dff85f4b0009a0acb95",
-//                "reference": "49d82c7f85f1b6ddd02d6dff85f4b0009a0acb95",
-//                "shasum": ""
-//            },
-//            "require": {
-//                "mageplaza/module-core": "^1.4.11"
-//            },
-//            "type": "magento2-module",
-//            "autoload": {
-//                "files": [
-//                    "registration.php"
-//                ],
-//                "psr-4": {
-//                    "Mageplaza\\Smtp\\": ""
-//                }
-//            },
-//            "notification-url": "https://packagist.org/downloads/",
-//            "license": [
-//                "proprietary"
-//            ],
-//            "authors": [
-//                {
-//                    "name": "Mageplaza",
-//                    "email": "support@mageplaza.com",
-//                    "homepage": "https://www.mageplaza.com",
-//                    "role": "Technical Support"
-//                }
-//            ],
-//            "description": "SMTP Extension for Magento 2 helps the owner of store simply install SMTP (Simple Mail Transfer Protocol) server which transmits the messages into codes or numbers",
-//            "keywords": [
-//                "Facebook ADS",
-//                "Marketing Automation",
-//                "Messenger",
-//                "email",
-//                "email marketing",
-//                "email settings",
-//                "facebook",
-//                "gmail smtp",
-//                "google ads",
-//                "magento 2",
-//                "magento 2 smtp",
-//                "magento smtp",
-//                "mageplaza",
-//                "sms",
-//                "sms marketing",
-//                "smtp",
-//                "web push notification",
-//                "whatsapp"
-//            ],
-//            "time": "2021-11-09T07:21:38+00:00"
-//        },
-B4: php bin/magento setup:install --base-url=http://example.com/ \
+B1: cd magento-compose 
+B2: rm -rf mysql/*
+B3: rm -rf es_data/*
+B4: php bin/magento setup:install --base-url=http://20.213.112.103/ \
 --db-host=mysql --db-name=magento2 --db-user=magentoUser --db-password=Duaboa123 \
 --admin-firstname=Admin --admin-lastname=Admin --admin-email=user@example.com \
 --admin-user=admin --admin-password=admin123 --language=en_US \
 --currency=USD --timezone=America/Chicago --use-rewrites=1 \
 --search-engine=elasticsearch7 --elasticsearch-host=elastic \
 --elasticsearch-port=9200
-B5: /admin
+B5: composer install
 B6: php bin/magento setup:upgrade
 B7: php bin/magento indexer:reindex
