@@ -1,13 +1,18 @@
 B1: cd magento-compose 
 B2: rm -rf mysql/*
 B3: rm -rf es_data/*
-B4: php bin/magento setup:install --base-url=http://20.213.112.103/ \
+B4: sudo docker-compose up -d
+B5: sudo docker-compose exec -u magento php bash
+B6: find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} + \
+    && find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} + \
+    && chown -R :www-data $(ls -Idev/docker)
+B7: php bin/magento setup:install --base-url=http://20.213.112.103/ \
 --db-host=mysql --db-name=magento2 --db-user=magentoUser --db-password=Duaboa123 \
 --admin-firstname=Admin --admin-lastname=Admin --admin-email=user@example.com \
 --admin-user=admin --admin-password=admin123 --language=en_US \
 --currency=USD --timezone=America/Chicago --use-rewrites=1 \
 --search-engine=elasticsearch7 --elasticsearch-host=elastic \
 --elasticsearch-port=9200
-B5: composer install
-B6: php bin/magento setup:upgrade
-B7: php bin/magento indexer:reindex
+B8: composer install
+B9: php bin/magento setup:upgrade
+B10: php bin/magento indexer:reindex
